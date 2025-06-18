@@ -59,6 +59,7 @@
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
+  flex: 1;
 }
 
 .name {
@@ -109,7 +110,10 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  margin: 16px auto 0 auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,7 +148,10 @@
   font-size: 20px;
   font-weight: 600;
   cursor: default;
-  margin: 16px auto 0 auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;

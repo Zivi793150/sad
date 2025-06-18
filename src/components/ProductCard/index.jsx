@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/cartSlice';
 import styles from './ProductCard.module.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, hideButton }) => {
   const dispatch = useDispatch();
   const [added, setAdded] = useState(false);
   // Вычисляем процент скидки, если есть discount_price
@@ -47,6 +47,8 @@ const ProductCard = ({ product }) => {
               </span>
             )}
           </div>
+        </div>
+        {!hideButton && (
           <button
             className={added ? styles.addedBtn : styles.addBtn}
             onClick={handleAdd}
@@ -54,7 +56,7 @@ const ProductCard = ({ product }) => {
           >
             {added ? 'Added' : 'Add to cart'}
           </button>
-        </div>
+        )}
       </Link>
     </div>
   );

@@ -58,10 +58,12 @@ const ProductPage = () => {
               <span className={styles.discount}>-{discount}%</span>
             )}
           </div>
-          <div className={styles.counterRow}>
-            <button onClick={() => setCount(c => Math.max(1, c - 1))} className={styles.counterBtn}>-</button>
-            <span className={styles.count}>{count}</span>
-            <button onClick={() => setCount(c => c + 1)} className={styles.counterBtn}>+</button>
+          <div className={styles.cartRow}>
+            <div className={styles.counterWrap}>
+              <button onClick={() => setCount(c => Math.max(1, c - 1))} className={styles.counterBtn}>-</button>
+              <span className={styles.count}>{count}</span>
+              <button onClick={() => setCount(c => c + 1)} className={styles.counterBtn}>+</button>
+            </div>
             <button className={styles.addToCart} onClick={handleAdd} disabled={added}>
               {added ? 'Added!' : 'Add to cart'}
             </button>

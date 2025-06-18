@@ -48,7 +48,7 @@ const SaleSection = () => {
             image: getImageUrl(product.image),
             price: product.price,
             discount_price: product.discont_price
-          }} />
+          }} hideButton={true} />
         ))}
       </div>
     </section>

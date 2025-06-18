@@ -1,7 +1,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
   width: 100%;
   margin-top: 0;
@@ -11,6 +11,7 @@
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: center;
   gap: 32px;
 }
 
@@ -63,9 +64,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 1360px;
-  height: 422px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  width: 100%;
   gap: 32px;
   margin: 0 auto;
   align-items: stretch;
