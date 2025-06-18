@@ -1,0 +1,83 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 40px 0 40px;
+  background: #fff;
+}
+
+.title {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #222222;
+  margin-bottom: 32px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.priceFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterLabel {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+  margin-right: 8px;
+}
+
+.input {
+  width: 70px;
+  padding: 8px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  margin-right: 4px;
+}
+
+.sortFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select {
+  padding: 8px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 10px 0 10px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .grid {
+    gap: 12px;
+  }
+} 

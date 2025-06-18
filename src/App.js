@@ -7,6 +7,7 @@ import ProductPage from './pages/ProductPage';
 import CategoryPage from './pages/CategoryPage';
 import CategoriesPage from './pages/CategoriesPage';
 import AllProductsPage from './pages/AllProductsPage';
+import SalePage from './pages/SalePage';
 import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
 import './index.css';
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/" element={<HomePage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/products" element={<AllProductsPage />} />
+        <Route path="/sales" element={<SalePage />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/cart" element={<CartPage />} />
