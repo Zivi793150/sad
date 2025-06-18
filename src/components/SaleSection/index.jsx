@@ -16,13 +16,15 @@ const SaleSection = () => {
   }, [dispatch, status]);
 
   // Фильтруем только товары со скидкой
-  const saleProducts = products.filter(product => product.discount_price && product.discount_price < product.price);
+  const saleProducts = products.filter(product => product.discont_price && product.discont_price < product.price);
 
   // Формируем абсолютный путь к изображению
   const getImageUrl = (image) =>
-    image.startsWith('http')
-      ? image
-      : `http://localhost:3333/public/product_img/${image}`;
+    image && image.startsWith('/')
+      ? `http://localhost:3333${image}`
+      : image && !image.startsWith('http')
+        ? `http://localhost:3333/public/product_img/${image}`
+        : image;
 
   return (
     <section className={styles.section}>
@@ -40,8 +42,13 @@ const SaleSection = () => {
       <div className={styles.grid}>
         {status === 'loading' && <div>Loading...</div>}
         {status === 'failed' && <div>Failed to load products</div>}
-        {status === 'succeeded' && saleProducts.map((product) => (
-          <ProductCard key={product.id} product={{ ...product, image: getImageUrl(product.image) }} />
+        {status === 'succeeded' && saleProducts.slice(0, 4).map((product) => (
+          <ProductCard key={product.id} product={{
+            ...product,
+            image: getImageUrl(product.image),
+            price: product.price,
+            discount_price: product.discont_price
+          }} />
         ))}
       </div>
     </section>

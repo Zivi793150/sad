@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 40px;
+  gap: 24px;
   width: 100%;
+  margin-top: 0;
 }
 
 .header {
@@ -61,15 +62,27 @@
 }
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 1360px;
+  height: 422px;
   gap: 32px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1400px) {
   .grid {
-    justify-content: center;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: auto;
   }
 } 
