@@ -1,0 +1,82 @@
+.header {
+  width: 100%;
+  height: 128px;
+  background: white;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  background: #0b710b;
+  border-radius: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plantIcon {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 18px;
+}
+
+.groundIcon {
+  position: absolute;
+  width: 36px;
+  height: 17px;
+  top: 56px;
+}
+
+.navigation {
+  margin: 0 auto;
+}
+
+.navList {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 500;
+  color: #222222;
+  font-size: 20px;
+  text-decoration: none;
+  line-height: 26px;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #0b710b;
+}
+
+.cartIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartIcon svg {
+  width: 48px;
+  height: 48px;
+  color: #222222;
+  transition: color 0.3s ease;
+}
+
+.cartIcon:hover svg {
+  color: #0b710b;
+} 
