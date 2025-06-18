@@ -1,86 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../store/productsSlice';
 import ProductCard from '../../components/ProductCard';
 import ContactSection from '../../components/ContactSection';
 import styles from './SalePage.module.css';
 
-const allProducts = [
-  {
-    id: 1,
-    name: 'Secateurs',
-    currentPrice: 199,
-    originalPrice: 240,
-    discount: 17,
-    image: '/assests/img-3.png',
-  },
-  {
-    id: 2,
-    name: 'Collection for berries (plastic)',
-    currentPrice: 26,
-    originalPrice: 35,
-    discount: 26,
-    image: '/assests/img (8).png',
-  },
-  {
-    id: 3,
-    name: 'Gloves (black)',
-    currentPrice: 9,
-    originalPrice: 14,
-    discount: 36,
-    image: '/assests/img (16).png',
-  },
-  {
-    id: 4,
-    name: 'Souvenir thermometer',
-    currentPrice: 98,
-    originalPrice: 120,
-    discount: 18,
-    image: '/assests/img (15).png',
-  },
-  {
-    id: 5,
-    name: 'Decorative forged bridge',
-    currentPrice: 500,
-    originalPrice: 1000,
-    discount: 50,
-    image: '/assests/img.png',
-  },
-  {
-    id: 6,
-    name: 'Flower basket',
-    currentPrice: 100,
-    originalPrice: 150,
-    discount: 34,
-    image: '/assests/img-1.png',
-  },
-  {
-    id: 7,
-    name: 'Aquarium lock',
-    currentPrice: 150,
-    originalPrice: 200,
-    discount: 25,
-    image: '/assests/img-2.png',
-  },
-];
-
 const SalePage = () => {
+  const dispatch = useDispatch();
+  const { items: products, status } = useSelector(state => state.products);
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
   const [sort, setSort] = useState('default');
 
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]);
+
+  // Фильтруем только товары со скидкой
+  let saleProducts = products.filter(p => p.discont_price && p.discont_price < p.price);
+
   // Фильтрация по цене
-  const filteredProducts = allProducts.filter(product => {
-    const from = priceFrom ? product.currentPrice >= Number(priceFrom) : true;
-    const to = priceTo ? product.currentPrice <= Number(priceTo) : true;
-    return from && to;
-  });
+  if (priceFrom) {
+    saleProducts = saleProducts.filter(p => (p.discont_price || p.price) >= Number(priceFrom));
+  }
+  if (priceTo) {
+    saleProducts = saleProducts.filter(p => (p.discont_price || p.price) <= Number(priceTo));
+  }
 
   // Сортировка
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sort === 'price-asc') return a.currentPrice - b.currentPrice;
-    if (sort === 'price-desc') return b.currentPrice - a.currentPrice;
-    if (sort === 'discount') return (b.discount || 0) - (a.discount || 0);
-    return 0;
-  });
+  if (sort === 'price-asc') {
+    saleProducts = [...saleProducts].sort((a, b) => (a.discont_price || a.price) - (b.discont_price || b.price));
+  } else if (sort === 'price-desc') {
+    saleProducts = [...saleProducts].sort((a, b) => (b.discont_price || b.price) - (a.discont_price || a.price));
+  } else if (sort === 'discount') {
+    saleProducts = [...saleProducts].sort((a, b) => ((b.price - (b.discont_price || b.price)) - (a.price - (a.discont_price || a.price))));
+  }
+
+  // Формируем абсолютный путь к изображению
+  const getImageUrl = (image) =>
+    image && image.startsWith('/')
+      ? `http://localhost:3333${image}`
+      : image && !image.startsWith('http')
+        ? `http://localhost:3333/public/product_img/${image}`
+        : image;
 
   return (
     <div className={styles.container}>
@@ -118,8 +82,18 @@ const SalePage = () => {
         </div>
       </div>
       <div className={styles.grid}>
-        {sortedProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+        {status === 'loading' && <div>Loading...</div>}
+        {status === 'failed' && <div>Failed to load products</div>}
+        {status === 'succeeded' && saleProducts.map(product => (
+          <ProductCard
+            key={product.id}
+            product={{
+              ...product,
+              image: getImageUrl(product.image),
+              price: product.price,
+              discount_price: product.discont_price
+            }}
+          />
         ))}
       </div>
       <ContactSection />

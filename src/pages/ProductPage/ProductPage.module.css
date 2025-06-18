@@ -1,3 +1,161 @@
-.product {
-  /* Стили для ProductPage */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 40px 0 40px;
+  background: #fff;
+}
+
+.productBlock {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 48px;
+  align-items: flex-start;
+}
+
+.imageBlock {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.infoBlock {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.title {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #222222;
+}
+
+.oldPrice {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-size: 24px;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.discount {
+  background: #0b710b;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 4px 12px;
+  margin-left: 8px;
+}
+
+.counterRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.counterBtn {
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+  border: 1px solid #dddddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.counterBtn:hover {
+  background: #f5f5f5;
+}
+.count {
+  font-size: 20px;
+  font-weight: 600;
+  width: 32px;
+  text-align: center;
+}
+.addToCart {
+  background: #0b710b;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  margin-left: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.addToCart:hover {
+  background: #096109;
+}
+
+.descBlock {
+  margin-top: 16px;
+}
+.descTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.desc {
+  font-size: 16px;
+  color: #222;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.loading {
+  font-size: 24px;
+  text-align: center;
+  margin: 80px 0;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 10px 0 10px;
+  }
+  .productBlock {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .image {
+    max-height: 220px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .price {
+    font-size: 28px;
+  }
+  .addToCart {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
 } 

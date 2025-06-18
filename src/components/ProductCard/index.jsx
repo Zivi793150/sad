@@ -3,31 +3,37 @@ import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
+  // Вычисляем процент скидки, если есть discount_price
+  const hasDiscount = product.discount_price && product.discount_price < product.price;
+  const discountPercent = hasDiscount
+    ? Math.round(100 - (product.discount_price / product.price) * 100)
+    : null;
+
   return (
     <Link to={`/product/${product.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img
           className={styles.image}
-          alt={product.name}
+          alt={product.title}
           src={product.image}
         />
-        {product.discount && (
+        {hasDiscount && (
           <div className={styles.badge}>
-            -{product.discount}%
+            -{discountPercent}%
           </div>
         )}
       </div>
       
       <div className={styles.content}>
-        <h3 className={styles.name}>{product.name}</h3>
+        <h3 className={styles.name}>{product.title}</h3>
         
         <div className={styles.priceContainer}>
           <span className={styles.currentPrice}>
-            ${product.currentPrice}
+            {hasDiscount ? `${product.discount_price} ₽` : `${product.price} ₽`}
           </span>
-          {product.originalPrice && (
+          {hasDiscount && (
             <span className={styles.originalPrice}>
-              ${product.originalPrice}
+              {product.price} ₽
             </span>
           )}
         </div>

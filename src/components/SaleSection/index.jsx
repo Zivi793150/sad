@@ -1,43 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../../store/productsSlice';
 import ProductCard from '../ProductCard';
 import styles from './SaleSection.module.css';
 
 const SaleSection = () => {
-  const saleProducts = [
-    {
-      id: 1,
-      name: "Decorative forged bridge",
-      currentPrice: 500,
-      originalPrice: 1000,
-      discount: 50,
-      image: "/assests/img.png",
-    },
-    {
-      id: 2,
-      name: "Flower basket",
-      currentPrice: 100,
-      originalPrice: 150,
-      discount: 34,
-      image: "/assests/img-1.png",
-    },
-    {
-      id: 3,
-      name: "Aquarium lock",
-      currentPrice: 150,
-      originalPrice: 200,
-      discount: 25,
-      image: "/assests/img-2.png",
-    },
-    {
-      id: 4,
-      name: "Secateurs",
-      currentPrice: 199,
-      originalPrice: 240,
-      discount: 17,
-      image: "/assests/img-3.png",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { items: products, status } = useSelector(state => state.products);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, status]);
+
+  // Фильтруем только товары со скидкой
+  const saleProducts = products.filter(product => product.discount_price && product.discount_price < product.price);
+
+  // Формируем абсолютный путь к изображению
+  const getImageUrl = (image) =>
+    image.startsWith('http')
+      ? image
+      : `http://localhost:3333/public/product_img/${image}`;
 
   return (
     <section className={styles.section}>
@@ -53,8 +38,10 @@ const SaleSection = () => {
       </div>
 
       <div className={styles.grid}>
-        {saleProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {status === 'loading' && <div>Loading...</div>}
+        {status === 'failed' && <div>Failed to load products</div>}
+        {status === 'succeeded' && saleProducts.map((product) => (
+          <ProductCard key={product.id} product={{ ...product, image: getImageUrl(product.image) }} />
         ))}
       </div>
     </section>
