@@ -1,15 +1,25 @@
+.cardWrap {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .card {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #dddddd;
+  /* border: 1px solid #dddddd; */
   text-decoration: none;
   color: inherit;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  background: #fff;
+  box-shadow: none;
 }
 
 .card:hover {
@@ -47,11 +57,8 @@
 .content {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: flex-start;
-  gap: 12px;
-  padding: 0 16px 16px 16px;
-  box-sizing: border-box;
+  height: 100%;
 }
 
 .name {
@@ -87,4 +94,63 @@
   font-size: 20px;
   line-height: 26px;
   text-decoration: line-through;
+}
+
+.addBtn {
+  width: 284px;
+  height: 58px;
+  border-radius: 12px;
+  padding: 16px 32px;
+  gap: 10px;
+  background: #0b710b;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin: 16px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.cardWrap:hover .addBtn,
+.cardWrap:focus-within .addBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.addBtn:hover, .addBtn:focus {
+  background: #282828;
+  color: #fff;
+  border-radius: 12px;
+  outline: 2px solid #0b710b;
+}
+
+.addedBtn {
+  width: 284px;
+  height: 58px;
+  border-radius: 12px;
+  padding: 16px 32px;
+  gap: 10px;
+  background: #fff;
+  color: #282828;
+  border: 1.5px solid #282828;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: default;
+  margin: 16px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s;
 } 

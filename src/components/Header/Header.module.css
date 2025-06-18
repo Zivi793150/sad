@@ -65,9 +65,9 @@
 }
 
 .cartIcon {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .cartIcon svg {
@@ -79,4 +79,24 @@
 
 .cartIcon:hover svg {
   color: #0b710b;
+}
+
+.cartBadge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #0b710b;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 50%;
+  min-width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 2px solid #fff;
+  z-index: 2;
+  pointer-events: none;
 } 
