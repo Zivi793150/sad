@@ -18,7 +18,7 @@
 }
 .overlay {
   position: absolute;
-  top: 120px;
+  top: 60px;
   left: 80px;
   display: flex;
   flex-direction: column;
@@ -27,11 +27,11 @@
 }
 .title {
   color: #fff;
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 700;
   font-family: 'Montserrat', Helvetica, sans-serif;
   line-height: 1.1;
-  max-width: 700px;
+  max-width: 900px;
 }
 .button {
   background: #339933;
@@ -56,13 +56,13 @@
     margin-right: 0;
   }
   .overlay {
-    top: 40px;
+    top: 10px;
     left: 20px;
     gap: 20px;
   }
   .title {
-    font-size: 28px;
-    max-width: 90vw;
+    font-size: 36px;
+    max-width: 95vw;
   }
   .button {
     font-size: 16px;

@@ -61,11 +61,17 @@ const ContactSection = () => {
           </div>
         </div>
 
-        {/* Map image */}
-        <img
+        {/* Map image заменяем на Google карту */}
+        <iframe
           className={styles.map}
-          alt="Map"
-          src="/assests/map.png"
+          title="Google Map"
+          src="https://www.google.com/maps?q=Dubininskaya+Ulitsa,+96,+Moscow,+Russia,+115093&output=embed"
+          width="100%"
+          height="350"
+          style={{ border: 0, borderRadius: '12px' }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
     </section>
