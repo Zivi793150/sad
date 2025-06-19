@@ -4,9 +4,11 @@ import styles from './DiscountFormSection.module.css';
 
 const DiscountFormSection = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [submitted, setSubmitted] = React.useState(false);
 
   const onSubmit = (data) => {
     console.log('Form submitted:', data);
+    setSubmitted(true);
     // Здесь будет логика отправки формы
   };
 
@@ -32,6 +34,7 @@ const DiscountFormSection = () => {
                 {...register('name', { required: 'Name is required' })}
                 className={styles.input}
                 placeholder="Name"
+                disabled={submitted}
               />
               {errors.name && <span className={styles.error}>{errors.name.message}</span>}
             </div>
@@ -41,6 +44,7 @@ const DiscountFormSection = () => {
                 {...register('phone', { required: 'Phone number is required' })}
                 className={styles.input}
                 placeholder="Phone number"
+                disabled={submitted}
               />
               {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
             </div>
@@ -56,17 +60,22 @@ const DiscountFormSection = () => {
                 })}
                 className={styles.input}
                 placeholder="Email"
+                disabled={submitted}
               />
               {errors.email && <span className={styles.error}>{errors.email.message}</span>}
             </div>
           </form>
 
-          <button 
-            onClick={handleSubmit(onSubmit)}
-            className={styles.submitButton}
-          >
-            Get a discount
-          </button>
+          {submitted ? (
+            <div className={styles.submitted}>Request Submitted</div>
+          ) : (
+            <button 
+              onClick={handleSubmit(onSubmit)}
+              className={styles.submitButton}
+            >
+              Get a discount
+            </button>
+          )}
         </div>
       </div>
     </div>

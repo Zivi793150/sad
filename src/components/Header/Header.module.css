@@ -12,7 +12,7 @@
 .logo {
   width: 70px;
   height: 70px;
-  background: #0b710b;
+  background: #339933;
   border-radius: 35px;
   position: relative;
   display: flex;
@@ -61,7 +61,7 @@
 }
 
 .navLink:hover {
-  color: #0b710b;
+  color: #339933;
 }
 
 .cartIcon {
@@ -78,14 +78,14 @@
 }
 
 .cartIcon:hover svg {
-  color: #0b710b;
+  color: #339933;
 }
 
 .cartBadge {
   position: absolute;
   top: 2px;
   right: 2px;
-  background: #0b710b;
+  background: #339933;
   color: #fff;
   font-size: 18px;
   font-weight: 700;

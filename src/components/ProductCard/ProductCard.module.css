@@ -44,7 +44,7 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: #0b710b;
+  background: #339933;
   color: white;
   font-family: 'Montserrat', Helvetica, sans-serif;
   font-weight: 600;
@@ -103,7 +103,7 @@
   border-radius: 12px;
   padding: 16px 32px;
   gap: 10px;
-  background: #0b710b;
+  background: #339933;
   color: #fff;
   border: none;
   font-size: 20px;
@@ -133,7 +133,7 @@
   background: #282828;
   color: #fff;
   border-radius: 12px;
-  outline: 2px solid #0b710b;
+  outline: none;
 }
 
 .addedBtn {

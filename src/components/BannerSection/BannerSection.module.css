@@ -34,7 +34,7 @@
   max-width: 700px;
 }
 .button {
-  background: #0b710b;
+  background: #339933;
   color: #fff;
   padding: 20px 48px;
   border-radius: 8px;
@@ -44,7 +44,8 @@
   transition: background 0.2s;
 }
 .button:hover {
-  background: #096109;
+  background: #267326;
+  outline: none;
 }
 
 @media (max-width: 900px) {

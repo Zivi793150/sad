@@ -21,16 +21,27 @@ const CartPage = () => {
 
   // Форма заказа (заглушка)
   const [form, setForm] = React.useState({ name: '', phone: '', email: '' });
+  const [showSuccess, setShowSuccess] = React.useState(false);
   const handleFormChange = e => setForm({ ...form, [e.target.name]: e.target.value });
   const handleOrder = e => {
     e.preventDefault();
     // TODO: отправка заказа
     dispatch(clearCart());
-    alert('Order placed!');
+    setShowSuccess(true);
   };
 
   return (
     <div className={styles.cartPage}>
+      {showSuccess && (
+        <>
+          <div className={styles.successOverlay} />
+          <div className={styles.successPopup}>
+            <button className={styles.closeBtn} onClick={() => setShowSuccess(false)}>&times;</button>
+            <div className={styles.successTitle}>Congratulations!</div>
+            <div className={styles.successText}>Your order has been successfully placed on the website.<br/>A manager will contact you shortly to confirm your order.</div>
+          </div>
+        </>
+      )}
       <h1 className={styles.title}>Shopping cart</h1>
       <div className={styles.content}>
         <div className={styles.itemsBlock}>

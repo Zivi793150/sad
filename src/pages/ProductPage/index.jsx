@@ -64,8 +64,12 @@ const ProductPage = () => {
               <span className={styles.count}>{count}</span>
               <button onClick={() => setCount(c => c + 1)} className={styles.counterBtn}>+</button>
             </div>
-            <button className={styles.addToCart} onClick={handleAdd} disabled={added}>
-              {added ? 'Added!' : 'Add to cart'}
+            <button
+              className={added ? styles.addedBtn : styles.addToCart}
+              onClick={handleAdd}
+              disabled={added}
+            >
+              {added ? 'Added' : 'Add to cart'}
             </button>
           </div>
           <div className={styles.descBlock}>

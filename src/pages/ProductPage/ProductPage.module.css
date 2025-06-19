@@ -66,7 +66,7 @@
 }
 
 .discount {
-  background: #0b710b;
+  background: #339933;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -123,7 +123,7 @@
   padding: 6px 16px;
 }
 .addToCart {
-  background: #0b710b;
+  background: #339933;
   color: #fff;
   font-size: 22px;
   font-weight: 700;
@@ -132,12 +132,37 @@
   padding: 18px 48px;
   margin-left: 0;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   min-width: 220px;
-  box-shadow: 0 4px 24px 0 rgba(11,113,11,0.08);
+  box-shadow: 0 4px 24px 0 rgba(51,153,51,0.08);
+  width: 284px;
+  height: 58px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.addToCart:hover {
-  background: #096109;
+.addToCart:hover:not(:disabled) {
+  background: #222;
+  color: #fff;
+}
+.addedBtn {
+  background: #fff;
+  color: #222;
+  font-size: 22px;
+  font-weight: 700;
+  border: 2px solid #222;
+  border-radius: 12px;
+  padding: 18px 48px;
+  min-width: 220px;
+  width: 284px;
+  height: 58px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  box-shadow: none;
 }
 
 .descBlock {

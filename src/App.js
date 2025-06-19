@@ -10,6 +10,7 @@ import AllProductsPage from './pages/AllProductsPage';
 import SalePage from './pages/SalePage';
 import CartPage from './pages/CartPage';
 import OrderPage from './pages/OrderPage';
+import NotFound from './pages/NotFound';
 import './index.css';
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
         <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
     <Footer />
